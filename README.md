@@ -4,7 +4,6 @@
 * 코드 위주로 기록합니다.
 * 줄글 기록은 https://harutocoding.tistory.com/ 에 있습니다.
 <br>
-<br>
 
 ## 학습 목표
 1. 자바
@@ -13,7 +12,6 @@
 4. AWS
 5. html, css, js, react, jquery
 6. UDEMY 강의 
-<br>
 <br>
 
 ## 추가 학습 목표
