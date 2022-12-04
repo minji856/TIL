@@ -25,7 +25,7 @@ node.js란?
 - 확장된 자바스크립트 문법이다.
 - 소문자 태그를 사용한다.
 - 반드시 닫는 태그가 있어야 한다.
-- 두 단어가 합쳐진 것이라면 단어 앞 글자는 모두 대문자로 적는다. (ex. MyApp, BackgroundcColor)
+- 두 단어가 합쳐진 것이라면 단어 앞 글자는 모두 대문자로 적는다. (ex. MyApp, backgroundcColor)
 - 주석은 {/* */} 형태로 적는다. return 외부는 //로 적는다.
 - 변수는 { str1 } 형식으로 적는다.
 
@@ -35,6 +35,7 @@ node.js란?
 - 삼항연산자를 사용하자.
 <br><br>
 **스타일 지정**
+- 스타일을 객체로 받는다.
 ```
 <h1 style={{color:"blue", border:"2px solid pink"}}>첫번째 방법</h1>
 
@@ -86,7 +87,7 @@ const GreetingClass = () => {
     return(<input type="button" value="인사" onClick={welcome}/>);
 }
 ```
-
+<br><br>
 
 **class 방식으로 정의**
 ```
@@ -97,8 +98,33 @@ class GreetingClass extends React.Component{
     }
 }
 ```
+<br><br>
+```
+function Greeting() {
+    let index = parseInt(Math.random() * 3); // 원래는 0.0에서 1.0사이의 수만 나옴.
+    let insa1 = "오늘도 즐거운 하루!";       
+    let insa2 = "안녕하세요 리액트!";
+    let insa3 = "오늘 날씨 어때요?";
+    let style1 = {color:"pink", backgroundColor:"silver", textAlign: "center"};   // 객체
 
+/*  방법 1. if문 사용   
+    if(index == 0) {insa = "오늘도 즐거운 하루!"} 
+    else if(index == 1) {insa = "안녕하세요 리액트!"} 
+    else {insa = "오늘 날씨 어때요?"}
 
+    let result = (<div><h1>{insa}</h1></div>);
+
+    return result;  */
+
+    // 방법 2. JSX 조건삼항연산자 
+    return(
+        index === 0 ? <h1 style={{color:"blue", border:"2px solid pink"}}>{index}:{insa1}</h1> : 
+        index === 1 ? <h1 style={style1}>{index}:{insa2}</h1> : <h1>{index}:{insa3}</h1>
+    );
+}
+
+export default Greeting;
+```
 
 
 
