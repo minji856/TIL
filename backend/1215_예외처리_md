@@ -1,0 +1,48 @@
+```
+package chap8;
+// 이 예외클래스는 checked예외라 반드시 예외처리 해야 한다.
+class MyException extends Exception{
+	int error_code;
+	MyException(String message, int error_code) {
+		super(message);	// 부모에게 있다.
+		this.error_code = error_code;
+	}
+	
+	public int getError_code() {
+		return error_code;
+	}
+}
+
+class Subject {
+	void search (String input) throws MyException {
+		String[] names = {"spring", "jsp", "servlet", "java"};
+		boolean isSearch = false;
+		for(int i = 0; i < names.length; i++) {
+			if(names[i].equals(input)) {
+				isSearch = true;
+				return;
+			}
+		}
+		// input 변수와 names 중 하나가 일치하면 "수강신청되셨습니다"
+		// input 변수와 names 중 하나가 일치하지 않으면 MyException 의도적 발생
+		if(isSearch == false) {
+			throw new MyException(input + "과정은 개설 전입니다.", 404);
+		}
+	}
+}
+
+public class MyExceptionTest {
+
+	public static void main(String[] args) {
+		
+		try {
+			new Subject().search("jsp");
+			System.out.println("수강신청되셨습니다");
+		} catch (MyException e) {
+			System.out.println(e.getError_code() + ":" + e.getMessage());
+		}
+		
+	}
+
+}
+```
